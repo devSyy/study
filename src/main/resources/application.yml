@@ -1,0 +1,44 @@
+server:
+  port: 5000
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+spring:
+  profiles:
+    include: key
+    active: dev
+  devtools:
+    livereload:
+      enabled: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #    ?? PC? ????? Database??? ?? ???.
+    url: jdbc:mysql://127.0.0.1:3306/db # Database?? ?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    #    mysql? ??? ??? ?? ??? ?? ???.
+    username: root
+    password: root
+    thymeleaf:
+      cache: false
+  # spring data jpa ??
+  jpa:
+#    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 1000 #??? ??
+
+logging:
+  level.org.hibernate:
+    SQL: DEBUG
+    orm.jdbc.bind: TRACE
+
+jwt:
+  secret: 111111111111111111212
