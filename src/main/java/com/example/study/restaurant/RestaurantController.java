@@ -4,15 +4,18 @@ import com.example.study.config.response.DataResponse;
 import com.example.study.config.response.ResponseService;
 import com.example.study.restaurant.dto.DetailRestaurantRes;
 import com.example.study.restaurant.dto.LookupRestaurantRes;
+import com.example.study.restaurant.dto.LookupRestaurantResDto;
 import com.example.study.restaurant.dto.RestaurantRequestDto;
 import com.example.study.restaurant.entity.Restaurant;
 import com.example.study.restaurant.repository.RestaurantRepository;
 import com.example.study.restaurant.service.RestaurantService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import static com.example.study.config.entity.Status.*;
@@ -31,9 +34,9 @@ public class RestaurantController {
 
     private Logger logger = Logger.getLogger(String.valueOf(RestaurantController.class));
 
-    @GetMapping(value ="/restaurants")
-    public DataResponse<Page<LookupRestaurantRes>> getAllRestaurants(@PageableDefault Pageable pageable) {
-        Page<LookupRestaurantRes> restaurants = restaurantRepository.findAllByStatusOrderByUpdatedAtDesc(pageable, Valid);
+    @GetMapping(value = "/restaurants")
+    public DataResponse<Page<LookupRestaurantResDto>> getAllRestaurants(@PageableDefault Pageable pageable) {
+        Page<LookupRestaurantResDto> restaurants = restaurantService.getAllRestaurants(pageable, Valid);
         return responseService.getDataResponse(restaurants);
     }
 

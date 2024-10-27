@@ -1,9 +1,12 @@
 package com.example.study.config.response;
 
 import com.example.study.config.response.exception.CustomExceptionStatus;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class ResponseService {
 
     /**

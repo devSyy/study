@@ -15,4 +15,6 @@ public class CommonResponse {
 
     protected String message;
 
+    protected String elapsedTime;
+
 }

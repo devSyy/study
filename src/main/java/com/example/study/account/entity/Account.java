@@ -57,6 +57,15 @@ public class Account extends BaseTimeEntity {
                         .build();
         }
 
+        public AccountAuthDto getAccountInfoDto() {
+                return AccountAuthDto.builder()
+                        .accountId(this.accountId)
+                        .email(this.email)
+                        .nickname(this.nickname)
+                        .alarmAgree(this.alarmAgree)
+                        .build();
+        }
+
         //        private boolean alarmAgree;
 
         //        @Enumerated(EnumType.STRING)

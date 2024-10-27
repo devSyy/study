@@ -8,6 +8,7 @@ import com.example.study.account.repository.AccountRepository;
 import com.example.study.config.entity.Status;
 import com.example.study.config.response.exception.CustomException;
 import com.example.study.config.response.exception.CustomExceptionStatus;
+import com.example.study.config.security.authentication.CustomUserDetails;
 import com.example.study.config.security.jwt.JwtTokenProvider;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -52,5 +53,12 @@ public class AccountService {
                 .build();
 
         return res;
+    }
+
+    public AccountAuthDto getAuthAccount(CustomUserDetails customUserDetails) {
+        Account account = customUserDetails.getAccount();
+        AccountAuthDto accountInfoDto = account.getAccountInfoDto();
+        accountInfoDto.setJwt(jwtTokenProvider.createToken(account.getEmail(), account.getRole()));
+        return accountInfoDto;
     }
 }

@@ -6,10 +6,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class DetailRestaurantRes {
+public class DetailRestaurantRes implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private Long restaurantId;
     private Status status;

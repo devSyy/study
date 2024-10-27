@@ -34,6 +34,9 @@ spring:
       hibernate:
         format_sql: true
         default_batch_fetch_size: 1000 #??? ??
+  redis:
+    host: 127.0.0.1
+    port: 6379
 
 logging:
   level.org.hibernate:

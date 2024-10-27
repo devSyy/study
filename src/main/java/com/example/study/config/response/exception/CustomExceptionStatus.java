@@ -94,10 +94,12 @@ public enum CustomExceptionStatus {
     MODIFY_FAIL_USERNAME(false,4014,"유저네임 수정 실패"),
 
     PASSWORD_ENCRYPTION_ERROR(false, 4011, "비밀번호 암호화에 실패하였습니다."),
-    PASSWORD_DECRYPTION_ERROR(false, 4012, "비밀번호 복호화에 실패하였습니다.");
+    PASSWORD_DECRYPTION_ERROR(false, 4012, "비밀번호 복호화에 실패하였습니다."),
 
 
     // 5000
+    REDIS_READ_ERROR(false, 5000, "REDIS 읽기에 실패하였습니다."),
+    REDIS_SAVE_ERROR(false, 5001, "REDIS 저장에 실패하였습니다.");
 
     // 6000
 
