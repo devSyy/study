@@ -1,18 +1,16 @@
-package com.example.study.restaurant.dto;
+package com.example.study.shop.dto;
 
 import com.example.study.config.entity.Status;
-import com.example.study.restaurant.entity.Restaurant;
+import com.example.study.shop.entity.Shop;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import static com.example.study.config.entity.Status.Valid;
-
 @Getter
 @NoArgsConstructor
-public class RestaurantRequestDto {
+public class ShopRequestDto {
 
     @Enumerated(EnumType.STRING)
     private Status status;
@@ -28,14 +26,14 @@ public class RestaurantRequestDto {
     private Boolean isExpress;
 
     @Builder
-    public RestaurantRequestDto(Status status, String name, Boolean isExpress) {
+    public ShopRequestDto(Status status, String name, Boolean isExpress) {
         this.status = status;
         this.name = name;
         this.isExpress = isExpress;
     }
 
-    public Restaurant toEntity() {
-        return Restaurant.builder()
+    public Shop toEntity() {
+        return Shop.builder()
                 .name(name)
                 .grade(grade)
                 .status(status)
@@ -43,10 +41,10 @@ public class RestaurantRequestDto {
                 .build();
     }
 
-    public RestaurantRequestDto toDto(Restaurant restaurant) {
-        return RestaurantRequestDto.builder()
-                .status(restaurant.getStatus())
-                .name(restaurant.getName())
+    public ShopRequestDto toDto(Shop shop) {
+        return ShopRequestDto.builder()
+                .status(shop.getStatus())
+                .name(shop.getName())
                 .build();
     }
 

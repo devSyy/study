@@ -33,7 +33,7 @@ public enum CustomExceptionStatus {
     Restaurant_NOT_FOUND(false, 2012, "가게를 찾을 수 없습니다."),
 
     // Menus
-    MENU_NOT_FOUND(false, 2013, "메뉴를 찾을 수 없습니다."),
+    MENU_NOT_FOUND(false, 2013, "상품를 찾을 수 없습니다."),
 
     // Options
     OPTIONS_NOT_FOUND(false, 2013, "주문 옵션을 찾을 수 없습니다."),

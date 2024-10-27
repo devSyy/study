@@ -33,7 +33,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
-        default_batch_fetch_size: 1000 #??? ??
+        default_batch_fetch_size: 1000
   redis:
     host: 127.0.0.1
     port: 6379
@@ -41,7 +41,9 @@ spring:
 logging:
   level.org.hibernate:
     SQL: DEBUG
-    orm.jdbc.bind: TRACE
+    orm.jdbc.bind: WARN
+#    loader.BatchFetchQueue: WARN
+
 
 jwt:
   secret: 111111111111111111212
