@@ -2,10 +2,7 @@ package com.example.study.shop;
 
 import com.example.study.config.response.DataResponse;
 import com.example.study.config.response.ResponseService;
-import com.example.study.shop.dto.DetailShopRes;
-import com.example.study.shop.dto.LookupShopRes;
-import com.example.study.shop.dto.LookupShopResDto;
-import com.example.study.shop.dto.ShopRequestDto;
+import com.example.study.shop.dto.*;
 import com.example.study.shop.repository.ShopRepository;
 import com.example.study.shop.service.ShopService;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +13,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import static com.example.study.config.entity.Status.*;
 
-import java.util.List;
 import java.util.logging.Logger;
 
 @RequiredArgsConstructor //  자동 생성자 주입, final이나 @NonNull으로 선언된 필드만을 파라미터로 받는 생성자를 생성
@@ -36,17 +32,16 @@ public class ShopController {
         return responseService.getDataResponse(shops);
     }
 
-    @GetMapping(value = "/shops/{id}")
-    public DataResponse<DetailShopRes> getDetailShop(@PathVariable(name = "id") Long id) {
-        DetailShopRes shops = shopService.getDetailShop(id);
+    @GetMapping(value = "/shops/category/{shopId}")
+    public DataResponse<ShopCategoryRes> getCategoryInShop(@PathVariable(name = "shopId") Long shopId) {
+        ShopCategoryRes shops = shopService.getCategoryInShop(shopId);
         return responseService.getDataResponse(shops);
     }
 
-    @GetMapping(value = "/shops/condition/{condition}")
-    public DataResponse<List<LookupShopRes>> getConditionList(@PathVariable(name = "condition") String condition,
-                                                              @RequestParam(name = "address") String address) {
-        List<LookupShopRes> shops = shopService.getConditionList(condition, address);
-        return responseService.getDataResponse(shops);
+    @GetMapping(value = "/shops/goods/{shopId}")
+    public DataResponse<ShopGoodsRes> getGoodsInShop(@PathVariable(name = "shopId") Long shopId) {
+        ShopGoodsRes goods = shopService.getGoodsInShop(shopId, Valid);
+        return responseService.getDataResponse(goods);
     }
 
     @PostMapping(value ="/shop")

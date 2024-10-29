@@ -41,7 +41,7 @@ spring:
 logging:
   level.org.hibernate:
     SQL: DEBUG
-    orm.jdbc.bind: WARN
+#    orm.jdbc.bind: WARN
 #    loader.BatchFetchQueue: WARN
 
 

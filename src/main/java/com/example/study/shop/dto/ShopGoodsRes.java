@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class DetailShopRes {
+public class ShopGoodsRes {
     private Long shopId;
     private Status status;
     private String name;
@@ -25,13 +25,13 @@ public class DetailShopRes {
 
     List<LookupGoodsRes> goodsRelations = new ArrayList<>();
 
-    public DetailShopRes(Shop shop) {
+    public ShopGoodsRes(Shop shop) {
         this.shopId = shop.getShopId();
         this.status = shop.getStatus();
         this.name = shop.getName();
         this.grade = shop.getGrade();
         this.goodsRelations =
-                shop.getGoodsRelations().stream()
+                shop.getShopGoodsRelations().stream()
                         .filter(m -> m.getStatus() != Status.Deleted)
                         .map(LookupGoodsRes::new).collect(Collectors.toList());
     }

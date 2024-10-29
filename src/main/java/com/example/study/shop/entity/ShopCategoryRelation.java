@@ -1,18 +1,18 @@
 package com.example.study.shop.entity;
 
+import com.example.study.category.entity.Category;
 import com.example.study.config.entity.BaseTimeEntity;
 import com.example.study.config.entity.Status;
-import com.example.study.goods.entity.Goods;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
-public class ShopGoodsRelation extends BaseTimeEntity {
+public class ShopCategoryRelation extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,16 +26,7 @@ public class ShopGoodsRelation extends BaseTimeEntity {
     private Shop shop;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "goodsId")
-    private Goods goods;
-
-
-    public void setShop(Shop shop) {
-        this.shop = shop;
-    }
-
-    public void setGoods(Goods goods) {
-        this.goods = goods;
-    }
+    @JoinColumn(name = "categoryId")
+    private Category category;
 
 }

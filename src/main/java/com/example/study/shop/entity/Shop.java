@@ -32,7 +32,10 @@ public class Shop extends BaseTimeEntity {
     private Boolean isExpress;
 
     @OneToMany(mappedBy = "shop", fetch = FetchType.LAZY)
-    List<ShopGoodsRelation> goodsRelations = new ArrayList<>();
+    List<ShopGoodsRelation> shopGoodsRelations = new ArrayList<>();
+
+    @OneToMany(mappedBy = "shop", fetch = FetchType.LAZY)
+    List<ShopCategoryRelation> shopCategoryRelations = new ArrayList<>();
 
     @Builder
     public Shop(String name, Float grade, Status status, Boolean isExpress){

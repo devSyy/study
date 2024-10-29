@@ -29,29 +29,14 @@ public enum CustomExceptionStatus {
     ACCOUNT_NOT_FOUND(false, 2011, "사용자를 찾을 수 없습니다."),
     ACCOUNT_NOT_VALID(false, 2028, "유효한 사용자가 아닙니다."),
 
-    // Restaurants
-    Restaurant_NOT_FOUND(false, 2012, "가게를 찾을 수 없습니다."),
+    // Shop
+    SHOP_NOT_FOUND(false, 2012, "가게를 찾을 수 없습니다."),
 
-    // Menus
-    MENU_NOT_FOUND(false, 2013, "상품를 찾을 수 없습니다."),
-
-    // Options
-    OPTIONS_NOT_FOUND(false, 2013, "주문 옵션을 찾을 수 없습니다."),
-
-    // Orders
-    EXIST_ANOTHER_RESTAURANT(false, 2014, "다른 가게에서 주문 중 입니다."),
-    NOT_EXIST_ORDERS(false, 2024, "장바구니에 주문이 없습니다."),
-    NOT_EXIST_PAYMENT_TYPE(false, 2025, "결제 방식을 설정해주세요."),
-    NOT_EXIST_COMPLETE_ORDERS(false, 2027, "잘못된 주문 번호입니다."),
+    // Goods
+    GOODS_NOT_FOUND(false, 2013, "상품를 찾을 수 없습니다."),
 
     // Category
     NOT_EXIST_CATEGORY(false, 2026, "카테고리를 찾을 수 없습니다."),
-
-    // Review
-    NOT_EXIST_REVIEW(false, 2029, "리뷰를 찾을 수 없습니다."),
-
-    // Comment
-    NOT_EXIST_COMMENT(false, 2030, "댓글을 찾을 수 없습니다."),
 
     // [POST] /users
     POST_USERS_EMPTY_EMAIL(false, 2015, "이메일을 입력해주세요."),
@@ -61,8 +46,6 @@ public enum CustomExceptionStatus {
     POST_USERS_INVALID_PASSWORD(false, 2021, "비밀번호 형식을 확인해주세요."),
     POST_USERS_EMPTY_PASSWORD(false, 2022, "비밀번호를 입력해주세요"),
     POST_USERS_EMPTY_AGREE(false, 2023, "알람 동의 여부를 확인해주세요."),
-
-
 
     /**
      * 3000 : Response 오류

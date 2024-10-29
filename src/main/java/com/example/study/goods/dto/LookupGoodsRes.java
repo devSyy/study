@@ -1,8 +1,9 @@
 package com.example.study.goods.dto;
 
 import com.example.study.config.entity.Status;
-import com.example.study.goods.entity.Goods;
 import com.example.study.shop.entity.ShopGoodsRelation;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,7 @@ public class LookupGoodsRes {
 
     private Long goodsId;
 
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     private String thumbnail;
@@ -35,13 +37,13 @@ public class LookupGoodsRes {
         this.subName = shopGoodsRelation.getGoods().getSubName();
     }
 
-    public LookupGoodsRes(Goods goods) {
-        this.goodsId = goods.getGoodsId();
-        this.name = goods.getName();
-        this.price = goods.getPrice();
-        this.status = goods.getStatus();
-        this.thumbnail = goods.getThumbnail();
-        this.subName = goods.getSubName();
-    }
+//    public LookupGoodsRes(Goods goods) {
+//        this.goodsId = goods.getGoodsId();
+//        this.name = goods.getName();
+//        this.price = goods.getPrice();
+//        this.status = goods.getStatus();
+//        this.thumbnail = goods.getThumbnail();
+//        this.subName = goods.getSubName();
+//    }
 
 }

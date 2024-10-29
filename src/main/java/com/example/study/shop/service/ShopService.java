@@ -3,9 +3,10 @@ package com.example.study.shop.service;
 import com.example.study.config.entity.Status;
 import com.example.study.config.response.exception.CustomException;
 import com.example.study.config.response.exception.CustomExceptionStatus;
-import com.example.study.shop.dto.DetailShopRes;
+import com.example.study.shop.dto.ShopCategoryRes;
 import com.example.study.shop.dto.LookupShopRes;
 import com.example.study.shop.dto.LookupShopResDto;
+import com.example.study.shop.dto.ShopGoodsRes;
 import com.example.study.shop.repository.ShopRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
@@ -18,7 +19,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 // 코드를 더 간결하고 가독성 좋게 하기 위해서입니다. 상수를 많이 사용하는 상황에서 반복적인 클래스 참조를 줄여주는 역할
-import static com.example.study.config.entity.Status.Valid;
+
 
 @RequiredArgsConstructor
 //@Transactional(readOnly = true)
@@ -40,19 +41,13 @@ public class ShopService {
         return new PageImpl<>(ListLookupRestaurantRes, pageable, projections.getTotalElements());
     }
 
-    public DetailShopRes getDetailShop(Long id) {
-        return shopRepository.findByShopId(id)
-                .orElseThrow(() -> new CustomException(CustomExceptionStatus.Restaurant_NOT_FOUND));
+    public ShopCategoryRes getCategoryInShop(Long shopId) {
+        return shopRepository.findAllCategoryEntityByShop(shopId)
+                .orElseThrow(() -> new CustomException(CustomExceptionStatus.SHOP_NOT_FOUND));
     }
 
-    public List<LookupShopRes> getConditionList(String condition, String address) {
-        List<LookupShopRes> shops;
-        if (condition.equals("express"))
-            shops = shopRepository.findAllByStatusAndGeneralAddressAndIsExpressOrderByUpdatedAtDesc(Valid, address, true);
-        else throw new CustomException(CustomExceptionStatus.REQUEST_ERROR);
-
-
-        return shops;
-
+    public ShopGoodsRes getGoodsInShop(Long shopId, Status status) {
+        return shopRepository.findAllGoodsEntityByShopAndStatus(shopId, status)
+                .orElseThrow(() -> new CustomException(CustomExceptionStatus.GOODS_NOT_FOUND));
     }
 }

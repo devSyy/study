@@ -3,7 +3,6 @@ package com.example.study.goods.service;
 import com.example.study.config.response.exception.CustomException;
 import com.example.study.config.response.exception.CustomExceptionStatus;
 import com.example.study.goods.dto.DetailGoodsRes;
-import com.example.study.goods.entity.Goods;
 import com.example.study.goods.repository.GoodsRepository;
 import com.example.study.shop.repository.ShopRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,11 +19,7 @@ public class GoodsService {
 
     public DetailGoodsRes getDetailGoods(Long id) {
         return goodsRepository.findByGoodsId(id)
-                .orElseThrow(() -> new CustomException(CustomExceptionStatus.MENU_NOT_FOUND));
+                .orElseThrow(() -> new CustomException(CustomExceptionStatus.GOODS_NOT_FOUND));
     }
 
-    public void save(Goods toEntity) {
-
-
-    }
 }
